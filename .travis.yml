@@ -6,7 +6,8 @@ install:
   - pip install pytest-cov
   - pip install python-coveralls
 script:
-  - py.test -vv seq_id.py --cov=tests
+  - py.test -vv seq_id.py --cov=seq_id
+  - py.test -vv translate.py --cov=translate
   - coveralls
 notifications:
   email:
