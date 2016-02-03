@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
-'''calculate sequence identity and similar statics for an alignment in FASTA format'''
+# Copyright (c) 2015-2016, Linus Östberg
+
+'''Calculate sequence identity and similar statics for an alignment in FASTA format'''
 
 import sys
 
@@ -99,8 +101,3 @@ if __name__ == '__main__' :
     results = calc_distance(seqs, GAPS_SKIP)
     
     print_results(results)
-
-    
-
-
-
