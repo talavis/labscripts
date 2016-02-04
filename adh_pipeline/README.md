@@ -4,6 +4,7 @@ Searching for new ADH sequences in local BLAST databases.
 
 Required software:
 - Python 3
+- BioPython
 - BASH
 - BLAST+
 - HMMER 3
