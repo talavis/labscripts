@@ -47,12 +47,17 @@ def prepare_data(accession, adh_class, adh_subclass='') :
         return tuple()
     return species, adh_class, adh_subclass, db, accession, title, sequence
 
+def test_prepare_data() :
+    #    assert prepare_data('P28332', 5) ==
+    assert prepare_data('NP_001095940.1', 5) == ('Homo sapiens', 5, '', 'NCBI', 'NP_001095940.1', 'alcohol dehydrogenase 6 isoform 1 [Homo sapiens]',
+                                              'MSTTGQVIRCKAAILWKPGAPFSIEEVEVAPPKAKEVRIKVVATGLCGTEMKVLGSKHLDLLYPTILGHEGAGIVESIGEGVSTVKPGDKVITLFLPQCGECTSCLNSEGNFCIQFKQSKTQLMSDGTSRFTCKGKSIYHFGNTSTFCEYTVIKEISVAKIDAVAPLEKVCLISCGFSTGFGAAINTAKVTPGSTCAVFGLGGVGLSVVMGCKAAGAARIIGVDVNKEKFKKAQELGATECLNPQDLKKPIQEVLFDMTDAGIDFCFEAIGNLDVLAAALASCNESYGVCVVVGVLPASVQLKISGQLFFSGRSLKGSVFGGWKSRQHIPKLVADYMAEKLNLDPLITHTLNLDKINEAVELMKTGKCIRCILLL')
+
 if __name__ == '__main__' :
     if len(sys.argv) < 3 or len(sys.argv) > 5 :
         sys.stderr.write('Usage: {0} <file with accessions and classes> <print non-significant instead of significant y/n> [ADH subclass]\n'.format(sys.argv[0]))
         sys.exit()
 
-    ncbi_record.setup('linus.ostberg@ki.se')    
+    ncbi_record.setup('email@example.com')
 
     filename = sys.argv[1]
     if sys.argv[2].lower() not in ('y', 'n') :
@@ -62,13 +67,11 @@ if __name__ == '__main__' :
 
     for line in open(filename) :
         cols = line.split('\t')
-        if float(cols[2]) > 1E-200 :
-            if print_nonsig :
-                res = prepare_data(cols[0], cols[1])
-                if len(res) > 0 :
-                    print('\t'.join(res))
-        else :
-            if not print_nonsig :
-                res = prepare_data(cols[0], cols[1])
-                if len(res) > 0 :
-                    print('\t'.join(res))
+        if float(cols[2]) > 1E-200 and print_nonsig :
+            res = prepare_data(cols[0], cols[1])
+            if len(res) > 0 :
+                print('\t'.join(res))
+        elif not print_nonsig :
+            res = prepare_data(cols[0], cols[1])
+            if len(res) > 0 :
+                print('\t'.join(res))
