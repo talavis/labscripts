@@ -15,6 +15,13 @@ def is_uniprot(accession) :
     else :
         return False
 
+def test_is_uniprot() :
+    assert is_uniprot('P41681') == True
+    assert is_uniprot('A0A0F7YFA1') == True
+    assert is_uniprot('ENSG00000172955') == False # Ensembl
+    assert is_uniprot('NP_001095940.1') == False # NCBI
+
+    
 def prepare_data(accession, adh_class, adh_subclass='') :
     '''Prepares data for output in the format for the db.
 
