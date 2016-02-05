@@ -8,6 +8,7 @@ install:
 script:
   - py.test -vv seq_id.py --cov=seq_id
   - py.test -vv translate.py --cov=translate
+  - py.test -vv adh_pipeline/accs_to_input --cov=pipe_accs_to_input
   - coveralls
 notifications:
   email:
