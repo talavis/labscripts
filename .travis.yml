@@ -11,6 +11,10 @@ script:
   - py.test -vv translate.py --cov=translate
   - py.test -vv adh_pipeline/accs_to_input.py --cov=accs_to_input
   - py.test -vv adh_pipeline/parse_hmm.py --cov=parse_hmm
+  - py.test -vv adh_pipeline/add_accessions.py --cov=add_accessions
+  - py.test -vv adh_pipeline/split_fasta_titles.py --cov=split_fasta_titles
+  - py.test -vv adh_pipeline/ncbi_record.py --cov=ncbi_record
+  - py.test -vv adh_pipeline/uniprot_record.py --cov=uniprot_record
   - coveralls
 notifications:
   email:
