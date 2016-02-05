@@ -4,22 +4,24 @@ import sys
 
 from Bio import SeqIO
 
-if len(sys.argv) != 2 :
-    sys.stderr.write('Usage: {} <fasta file>\n'.format(sys.argv[0]))
-    sys.exit()
+if __name__ == '__main__' :
 
-records = list(SeqIO.parse(sys.argv[1], 'fasta'))
+    if len(sys.argv) != 2 :
+        sys.stderr.write('Usage: {} <fasta file>\n'.format(sys.argv[0]))
+        sys.exit()
 
-descs = list()
+    records = list(SeqIO.parse(sys.argv[1], 'fasta'))
 
-recs = list()
-for r in records :
-    if r.description not in descs :
-        recs.append(r)
-        descs.append(r.description)
+    descs = list()
 
-for i in range(len(recs)) :
-    titles = descs[i]. split(' >')
-    for j in range(len(titles)) :
-        print('>' + titles[j])
-        print(recs[i].seq)
+    recs = list()
+    for r in records :
+        if r.description not in descs :
+            recs.append(r)
+            descs.append(r.description)
+
+    for i in range(len(recs)) :
+        titles = descs[i]. split(' >')
+        for j in range(len(titles)) :
+            print('>' + titles[j])
+            print(recs[i].seq)
