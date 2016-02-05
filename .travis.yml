@@ -5,6 +5,7 @@ python:
 install:
   - pip install pytest-cov
   - pip install python-coveralls
+  - pip install biopython
 script:
   - py.test -vv seq_id.py --cov=seq_id
   - py.test -vv translate.py --cov=translate
