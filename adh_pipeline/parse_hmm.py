@@ -2,12 +2,6 @@
 
 import sys
 
-if len(sys.argv) != 2 :
-    sys.stderr.write('Usage: {0} <hmm table>\n'.format(sys.argv[0]))
-    sys.exit()
-
-table = sys.argv[1]
-
 def rip_data_ncbi(title) :
     '''Rip data from a FASTA file from a NCBI database.
     Returned data will be:
@@ -53,6 +47,12 @@ def rip_acc(header) :
             return(header)
         
 if __name__ == '__main__' :
+    if len(sys.argv) != 2 :
+        sys.stderr.write('Usage: {0} <hmm table>\n'.format(sys.argv[0]))
+        sys.exit()
+
+    table = sys.argv[1]
+
     models = list()
     e_values = list()
     acc = ''
